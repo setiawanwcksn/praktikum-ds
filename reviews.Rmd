@@ -8,10 +8,7 @@ runtime: shiny
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
 
-**`global`**
-```{r global}
 library(dplyr)
 library(vroom)
 library(here)
@@ -52,10 +49,7 @@ table_restaurant = function() {
       select(variation, verified_reviews, feedback) %>%
       head(50)
 }
-```
 
-**`ui`**
-```{r ui}
 ui = fluidPage(
   title = "Sentiment Analysis of Hotel Review",
   headerPanel("Sentiment Analysis of Hotel Review"),
@@ -89,6 +83,7 @@ ui = fluidPage(
       )
     ),
     mainPanel(
+      br(),
       plotlyOutput(outputId = "plot_word_usage", height = "700px"),
       h3("Words Cloud", align = "center"),
       plotOutput(outputId = "plot_word_cloud", height = "1200px"),
@@ -97,10 +92,7 @@ ui = fluidPage(
     )
   )
 )
-```
 
-**`server`**
-```{r server}
 server = function(input, output, session) {
   plot_word_freq = reactive({
     restaurant %>% 
